@@ -34,12 +34,15 @@ const styles = StyleSheet.create({
   topContent: {
     alignSelf: "center",
     marginTop: 28,
+    width:"100%",
+    textAlign:"center"
   },
   title: {
     fontWeight: "400",
     fontSize: 34,
     lineHeight: 41,
-    textAlign:"center"
+    textAlign:"center",
+    color:"#000000"
   },
   temperature: {
     fontSize: 96,
@@ -47,13 +50,16 @@ const styles = StyleSheet.create({
     letterSpacing: 0.37,
     fontWeight: "400",
     marginTop: 12,
+    textAlign:"center",
+     color:"#000000"
   },
   weather: {
     fontWeight: "600",
     fontSize: 20,
     lineHeight: 24,
     textTransform: "capitalize",
-    textAlign:"center"
+    textAlign:"center",
+     color:"#000000"
   },
   botContent: {
     height: 280

@@ -17,7 +17,7 @@ export default function ViewWeather({ data, valueTab }) {
 }
 const styles = StyleSheet.create({
   wrapViewWeather: {
-    width: 80,
+    width: 85,
     borderRadius: 30,
     height: 146,
     flexDirection: "column",

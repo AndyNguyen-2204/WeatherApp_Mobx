@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { View, SafeAreaView, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import Tab from '../tabControl/tab'
 import ViewWeather from '../viewWeather/viewWeather'
 import { store } from '../../../context/store'
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
   wraphourlyForecast: {
     borderTopLeftRadius: 44,
     borderTopRightRadius: 44,
-    position: "relative"
+    position: "relative",
   },
   background: {
     height: "100%",
