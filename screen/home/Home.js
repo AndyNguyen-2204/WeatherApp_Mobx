@@ -4,6 +4,7 @@ import HourlyForecast from "../../src/components/hourlyForecast/index"
 import { store } from "../../context/store"
 export default function Home() {
   const globalState = useContext(store);
+  console.log("🚀 ~ file: Home.js:7 ~ Home ~ globalState:", globalState)
   return (
     <SafeAreaView style={styles.wrapHomeScreen}>
       <Image source={require("../../assets/homeImg/morning.jpeg")} style={{ height: "100%", width: "100%", resizeMode: "cover" }} />

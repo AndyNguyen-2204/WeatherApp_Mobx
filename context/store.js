@@ -7,12 +7,13 @@ const { Provider } = store;
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     const data = action.data
-    console.log("🚀 ~ file: store.js:10 ~ const[state,dispatch]=useReducer ~ data:", data)
     switch (action.type) {
       case 'GET_WEATHER':
         return state = { ...state, data }
       case 'GET_CITY':
         return state = { city: data }
+      case 'GET_WEATHERDETAIL':
+        return state = { ...state,weatherDetail: data }  
       default:
         console.log("err");
     };

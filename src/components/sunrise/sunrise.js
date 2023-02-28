@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React from 'react'
 import { Text, SafeAreaView, View, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
@@ -8,8 +9,14 @@ export default function Sunrise({globalState}) {
        <Icon name='sun' color={"#ffffff"} size={25} />
        <Text style={{textTransform:"capitalize",color:"#ffffff"}}>Sunrise-Sunset</Text>
        </View>
-       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>4</Text>
-       <Text style={{color:"#ffffff",fontWeight:"400"}}>Chỉ số thấp nhấp là 0 và cực đại là 11</Text>
+       <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
+        <Icon name="sunrise" color="#ffffff" size={25}/>
+        <Text style={{fontSize:20,color:"#ffffff"}}>{globalState.state.weatherDetail?moment.unix(globalState.state.weatherDetail.sunrise).format('LT'):moment.unix(globalState.state.data.daily[0].sunrise).format('LT')}</Text>
+       </View>
+       <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
+        <Icon name="sunset" color="#ffffff" size={25}/>
+        <Text style={{fontSize:20,color:"#ffffff"}}>{globalState.state.weatherDetail?moment.unix(globalState.state.weatherDetail.sunset).format('LT'):moment.unix(globalState.state.data.daily[0].sunset).format('LT')}</Text>
+       </View>
     </SafeAreaView>
   )
 }

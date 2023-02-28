@@ -3,10 +3,10 @@ import React from 'react'
 import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet } from "react-native"
 import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace'
 import { ativeViewWeather, renderIcon } from "./functionHelper"
-export default function ViewWeather({ data, valueTab }) {
+export default function ViewWeather({ data, valueTab,handelGetDetail}) {
 
   return (
-    <TouchableOpacity style={[styles.wrapViewWeather, ativeViewWeather(data.dt, valueTab) ? styles.active : ""]}>
+    <TouchableOpacity style={[styles.wrapViewWeather, ativeViewWeather(data.dt, valueTab) ? styles.active : ""]} onPress={()=>handelGetDetail(data,valueTab)}>
       <Text style={styles.topContent}>{valueTab === 1 ? moment.unix(data.dt).format('LT') : moment.unix(data.dt).format('DD-MM')}</Text>
       <Text>
         {renderIcon(data?.weather[0].main, data?.uvi)}
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     marginRight: 12
   },
   active: {
-    backgroundColor: "#555555"
+    backgroundColor: "#48319D"
   },
   topContent: {
     fontFamily: "Inter",

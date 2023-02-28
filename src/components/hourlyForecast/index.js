@@ -5,6 +5,7 @@ import ViewWeather from '../viewWeather/viewWeather'
 import { store } from '../../../context/store'
 import axios from 'axios'
 import { actFetchApiRequest } from '../callApi'
+import { useNavigation } from '@react-navigation/native';
 export default function hourlyForecast() {
   const contenttab = [
     {
@@ -17,9 +18,19 @@ export default function hourlyForecast() {
     },
   ]
   const [valueTab, setValueTab] = useState(1)
+  const navigation = useNavigation();
   const globalState = useContext(store);
   const { dispatch } = globalState;
   const [city, setCity] = useState("Ha noi")
+  const handelGetDetail=(data,valueTab)=>{
+    if(valueTab === 2){
+      dispatch({
+        type: 'GET_WEATHERDETAIL',
+        data: data
+      })
+      navigation.navigate("Detail")
+    }
+  }
   const renderViewWeather = useMemo(() => {
     if (Object.entries(globalState.state).length > 1) {
       if (valueTab === 1) {
@@ -29,7 +40,7 @@ export default function hourlyForecast() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingLeft: 12 }}
             data={globalState.state.data.hourly}
-            renderItem={({ item, index }) => <ViewWeather data={item} key={index} valueTab={valueTab} />}
+            renderItem={({ item, index }) => <ViewWeather handelGetDetail={handelGetDetail} data={item} key={index} valueTab={valueTab} />}
             keyExtractor={item => item.dt}
           />
         )
@@ -40,7 +51,7 @@ export default function hourlyForecast() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingLeft: 12 }}
             data={globalState.state.data.daily}
-            renderItem={({ item, index }) => <ViewWeather data={item} key={index} valueTab={valueTab} />}
+            renderItem={({ item, index }) => <ViewWeather handelGetDetail={handelGetDetail} data={item} key={index} valueTab={valueTab} />}
             keyExtractor={item => item.dt}
           />
         )

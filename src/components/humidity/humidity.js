@@ -1,15 +1,15 @@
 import React from 'react'
 import { Text, SafeAreaView, View, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native'
-import Icon from 'react-native-vector-icons/Feather'
-export default function UvIndex({globalState}) {
+import Icon from 'react-native-vector-icons/Entypo'
+export default function Humidity({globalState}) {
   return (
     <SafeAreaView style={styles.wrapUvIndex}>
     <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
-       <Icon name='sun' color={"#ffffff"} size={25} />
-       <Text style={{textTransform:"capitalize",color:"#ffffff"}}>Uv index</Text>
+       <Icon name='water' color={"#ffffff"} size={25} />
+       <Text style={{textTransform:"capitalize",color:"#ffffff"}}>Humidity</Text>
        </View>
-       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>{globalState.state.weatherDetail?globalState.state.weatherDetail.uvi:globalState?.state?.data?.daily[0].uvi}</Text>
-       <Text style={{color:"#ffffff",fontWeight:"400"}}>Chỉ số thấp nhấp là 0 và cực đại là 11</Text>
+       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>{globalState.state.weatherDetail?globalState.state.weatherDetail.humidity:globalState?.state?.data?.daily[0].humidity}%</Text>
+       <Text style={{color:"#ffffff",fontWeight:"400"}}>Độ ẩm trong ngày</Text>
     </SafeAreaView>
   )
 }
