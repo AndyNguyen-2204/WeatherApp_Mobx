@@ -1,15 +1,15 @@
 import moment from 'moment'
 import React from 'react'
-import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet } from "react-native"
-import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace'
-import { ativeViewWeather, renderIcon } from "./functionHelper"
+import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, Image } from "react-native"
+import { ativeViewWeather} from "./functionHelper"
 export default function ViewWeather({ data, valueTab,handelGetDetail}) {
+console.log("🚀 ~ file: viewWeather.js:7 ~ ViewWeather ~ data:", data)
 
   return (
     <TouchableOpacity style={[styles.wrapViewWeather, ativeViewWeather(data.dt, valueTab) ? styles.active : ""]} onPress={()=>handelGetDetail(data,valueTab)}>
       <Text style={styles.topContent}>{valueTab === 1 ? moment.unix(data.dt).format('LT') : moment.unix(data.dt).format('DD-MM')}</Text>
       <Text>
-        {renderIcon(data?.weather[0].main, data?.uvi)}
+       <Image style={{height:30,width:50}} source={{uri:`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`}}/>
       </Text>
       <Text style={styles.botContent}>{valueTab === 1 ? Math.round(data.temp) : Math.round(data.temp.day)}°</Text>
     </TouchableOpacity>
