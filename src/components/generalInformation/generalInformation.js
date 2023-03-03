@@ -1,7 +1,9 @@
 import React from 'react'
 import {StyleSheet, Text, View} from "react-native"
 import Icon from 'react-native-vector-icons/Entypo'
-export default function GeneralInformation({globalState}) {
+import { useStores } from '../../../context/rootStore';
+export default function GeneralInformation() {
+  const {weatherStore,weatherDetail}=useStores()
   return (
     <View style={styles.generalInformation}>
        <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
@@ -9,11 +11,15 @@ export default function GeneralInformation({globalState}) {
        <Text style={{textTransform:"capitalize",color:"#ffffff"}}>general Information</Text>
        </View>
        <View style={{flexDirection:"row",flexWrap:"wrap",gap:10,marginTop:20}}>
-        <Text style={styles.textInfo}>Nhiệt độ ban ngày : {globalState.state.weatherDetail?Math.round(globalState.state.weatherDetail.temp.morn):Math.round(globalState.state.data.daily[0].temp.morn)}°</Text>
-        <Text style={styles.textInfo}>Độ ẩm : {globalState.state.weatherDetail?globalState.state.weatherDetail.humidity:globalState.state.data.daily[0].humidity}%</Text>
-        <Text style={styles.textInfo}>Áp lực : {globalState.state.weatherDetail?globalState.state.weatherDetail.pressure:globalState.state.data.daily[0].pressure} hPa</Text>
-        <Text style={styles.textInfo}>Nhiệt độ về đêm : {globalState.state.weatherDetail?Math.round(globalState.state.weatherDetail.temp.night):Math.round(globalState.state.data.daily[0].temp.night)}°</Text>
-        <Text style={styles.textInfoo}>Nhiệt độ trung bình ngày : {globalState.state.weatherDetail?Math.round(globalState.state.weatherDetail.temp.day):Math.round(globalState.state.data.daily[0].temp.day)}°</Text>
+        <Text style={styles.textInfo}>Nhiệt độ ban ngày : {weatherDetail.weatherDetail.data?Math.round(weatherDetail.weatherDetail.data.temp.morn):Math.round(weatherStore.weatherCity.weather
+          .data.daily[0].temp.morn)}°</Text>
+        <Text style={styles.textInfo}>Độ ẩm : {weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.humidity:weatherStore.weatherCity.weather
+          .data.daily[0].humidity}%</Text>
+        <Text style={styles.textInfo}>Áp lực : {weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.pressure:weatherStore.weatherCity.weather
+          .data.daily[0].pressure} hPa</Text>
+        <Text style={styles.textInfo}>Nhiệt độ về đêm : {weatherDetail.weatherDetail.data?Math.round(weatherDetail.weatherDetail.data.temp.night):Math.round(weatherStore.weatherCity.weather
+          .data.daily[0].temp.night)}°</Text>
+        <Text style={styles.textInfoo}>Nhiệt độ trung bình ngày : {weatherDetail.weatherDetail.data?Math.round(weatherDetail.weatherDetail.data.temp.day):Math.round(weatherStore.weatherCity.weather.data.daily[0].temp.day)}°</Text>
        </View>
       </View>
   )

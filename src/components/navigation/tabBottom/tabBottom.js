@@ -14,16 +14,10 @@ export default function TabBottom() {
        tabBarShowLabel:false,
        tabBarStyle: { backgroundColor:"#708090" },
        tabBarInactiveTintColor:"#ffffff",
-       tabBarActiveTintColor:"#E3D946"
+       tabBarActiveTintColor:"#E3D946",
+       tabBarHideOnKeyboard:true
     }}
     >
-    <Tab.Screen name="Detaill" component={WeatherDetail} 
-    options={{
-      tabBarIcon: ({ color, size }) => (
-        <Icon name="search" color={color} size={size} />
-      ),
-    }}
-    />
     <Tab.Screen name="Home" component={Home}
     options={{
       headerShown:false,

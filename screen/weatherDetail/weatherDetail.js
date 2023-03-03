@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Text, SafeAreaView, View, TouchableOpacity, Image, StyleSheet, Dimensions, ScrollView } from 'react-native'
-import { store } from '../../context/store';
 import Icon from 'react-native-vector-icons/Entypo'
 import GeneralInformation from '../../src/components/generalInformation/generalInformation';
 import UvIndex from '../../src/components/uvIndex/uvIndex';
@@ -10,38 +9,40 @@ import DewPoint from '../../src/components/dewPoint/dewPoint';
 import FeelsLike from '../../src/components/feelsLike/feelsLike';
 import Humidity from '../../src/components/humidity/humidity';
 import moment from 'moment';
-export default function WeatherDetail() {
-  const globalState = useContext(store);
-  console.log("🚀 ~ file: weatherDetail.js:7 ~ WeatherDetail ~ globalState:", globalState)
-  // const windowHeight = Dimensions.get('window').height;
+import { observer } from 'mobx-react';
+import { useStores } from '../../context/rootStore';
+  const WeatherDetail=observer(()=>{
+  const windowHeight = Dimensions.get('window').height;
+  const {weatherStore,weatherDetail}=useStores()
   return (
     <SafeAreaView style={{backgroundColor:"#708090",height:"100%",width:" 100%",paddingHorizontal:15}}>
       <View style={styles.topContent}>
-          <Text style={styles.title}>{globalState?.state?.city}</Text>
+          <Text style={styles.title}>{weatherStore?.weatherCity?.city}</Text>
           <View style={{flexDirection:"row",alignSelf:"center"}}>
-          <Text style={styles.temperature}>{globalState.state.weatherDetail?Math.round(globalState.state.weatherDetail.temp
-                    .day):Math.round(globalState.state.data.daily[0].temp.day)}°</Text>
+          <Text style={styles.temperature}>{weatherDetail.weatherDetail.data?Math.round(weatherDetail.weatherDetail.data.temp.day):Math.round(weatherStore.weatherCity.weather
+          .data.daily[0].temp.day)}°</Text>
           <Text style={{fontSize:20,fontWeight:700,lineHeight:24,color:"#B8B8B8"}}> | </Text>
-          <Text style={styles.weather}>{globalState.state.weatherDetail?globalState.state.weatherDetail.weather
-                    [0].description:globalState.state.data.daily[0].weather
-                    [0].description}</Text>
+          <Text style={styles.weather}>{weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.weather[0].description:weatherStore.weatherCity.weather
+          .data.daily[0].weather[0].description}</Text>
           </View>
-          <Text style={{fontSize:20,fontWeight:"600",lineHeight:24, color:"#B8B8B8",alignSelf:"center",marginTop:5}}>{globalState.state.weatherDetail? moment.unix(globalState.state.weatherDetail.dt).format('DD-MM-YYYY'): moment.unix(globalState.state.data.daily[0].dt).format('DD-MM-YYYY')}</Text>
+          <Text style={{fontSize:20,fontWeight:"600",lineHeight:24, color:"#B8B8B8",alignSelf:"center",marginTop:5}}>{weatherDetail.weatherDetail.data? moment.unix(weatherDetail.weatherDetail.data.dt).format('DD-MM-YYYY'): moment.unix(weatherStore.weatherCity.weather
+          .data.daily[0].dt).format('DD-MM-YYYY')}</Text>
         </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-      <GeneralInformation globalState={globalState}/>
+      <GeneralInformation/>
       <View style={{flexDirection:"row",flexWrap:"wrap",justifyContent:"space-between",marginVertical:10,gap:10}}>
-      <UvIndex globalState={globalState}/>
-      <Sunrise globalState={globalState}/>
-      <Wind globalState={globalState}/>
-      <DewPoint globalState={globalState}/>
-      <FeelsLike globalState={globalState}/>
-      <Humidity globalState={globalState}/>
+      <UvIndex/>
+      <Sunrise/>
+      <Wind/>
+      <DewPoint/>
+      <FeelsLike/>
+      <Humidity/>
       </View>
       </ScrollView>
     </SafeAreaView>
   )
-}
+})
+export default WeatherDetail
 const styles=StyleSheet.create({
   topContent: {
     alignSelf: "center",

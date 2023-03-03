@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { View, SafeAreaView, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native'
-import { store } from '../../../context/store';
 export default function Tab({ content, setValueTab, valueTab }) {
   return (
     <SafeAreaView style={{ paddingBottom: 10, borderBottomWidth: 2, borderColor: "#FFF5EE" }}>

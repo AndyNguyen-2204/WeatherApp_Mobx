@@ -2,7 +2,9 @@ import moment from 'moment'
 import React from 'react'
 import { Text, SafeAreaView, View, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
-export default function Sunrise({globalState}) {
+import { useStores } from '../../../context/rootStore';
+export default function Sunrise() {
+  const {weatherStore,weatherDetail}=useStores()
   return (
     <SafeAreaView style={styles.wrapUvIndex}>
     <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
@@ -11,11 +13,13 @@ export default function Sunrise({globalState}) {
        </View>
        <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
         <Icon name="sunrise" color="#ffffff" size={25}/>
-        <Text style={{fontSize:20,color:"#ffffff"}}>{globalState.state.weatherDetail?moment.unix(globalState.state.weatherDetail.sunrise).format('LT'):moment.unix(globalState.state.data.daily[0].sunrise).format('LT')}</Text>
+        <Text style={{fontSize:20,color:"#ffffff"}}>{weatherDetail.weatherDetail.data?moment.unix(weatherDetail.weatherDetail.data.sunrise).format('LT'):moment.unix(weatherStore.weatherCity.weather
+          .data.daily[0].sunrise).format('LT')}</Text>
        </View>
        <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
         <Icon name="sunset" color="#ffffff" size={25}/>
-        <Text style={{fontSize:20,color:"#ffffff"}}>{globalState.state.weatherDetail?moment.unix(globalState.state.weatherDetail.sunset).format('LT'):moment.unix(globalState.state.data.daily[0].sunset).format('LT')}</Text>
+        <Text style={{fontSize:20,color:"#ffffff"}}>{weatherDetail.weatherDetail.data?moment.unix(weatherDetail.weatherDetail.data.sunset).format('LT'):moment.unix(weatherStore.weatherCity.weather
+          .data.daily[0].sunset).format('LT')}</Text>
        </View>
     </SafeAreaView>
   )
