@@ -11,7 +11,7 @@ export default function Wind() {
        <Icon name='wind' color={"#ffffff"} size={25} />
        <Text style={{textTransform:"capitalize",color:"#ffffff"}}>Wind</Text>
        </View>
-       <Text style={{fontSize:20,color:"#ffffff",alignSelf:"center",marginTop:35}}>{weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.wind_speed:weatherStore.weatherCity.weather
+       <Text style={{fontSize:20,color:"#ffffff",alignSelf:"center",marginTop:35}}>{weatherDetail.weatherDetail?weatherDetail.weatherDetail.data.wind_speed:weatherStore.weatherCity.weather
           .data.daily[0].wind_speed} km/h</Text>
     </SafeAreaView>
   )

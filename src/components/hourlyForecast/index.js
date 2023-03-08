@@ -62,7 +62,7 @@ const hourlyForecast=observer(({city,setErr})=> {
         weatherStore.getCity({city:res.data.name})
         actFetchApiRequest(res.data, weatherStore)
         setErr("")
-        weatherDetail.getWeatherDetail({})
+        weatherDetail.getWeatherDetail()
       }).catch(
         setErr("Không tìm thấy thành phố  ")
       )

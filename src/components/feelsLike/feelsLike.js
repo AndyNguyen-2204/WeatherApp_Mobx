@@ -10,7 +10,7 @@ export default function FeelsLike() {
        <Icon name='thermometer-three-quarters' color={"#ffffff"} size={25} />
        <Text style={{textTransform:"capitalize",color:"#ffffff"}}>Feels Like</Text>
        </View>
-       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>{weatherDetail.weatherDetail.data? Math.round(weatherDetail.weatherDetail.data.feels_like.day):Math.round(weatherStore.weatherCity.weather.data.daily[0].feels_like.day)}°</Text>
+       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>{weatherDetail.weatherDetail? Math.round(weatherDetail.weatherDetail.data.feels_like.day):Math.round(weatherStore.weatherCity.weather.data.daily[0].feels_like.day)}°</Text>
        <Text style={{color:"#ffffff",fontWeight:"400"}}>Nhiệt độ cảm giác trong ngày</Text>
     </SafeAreaView>
   )

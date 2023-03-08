@@ -10,7 +10,7 @@ export default function Humidity() {
        <Icon name='water' color={"#ffffff"} size={25} />
        <Text style={{textTransform:"capitalize",color:"#ffffff"}}>Humidity</Text>
        </View>
-       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>{weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.humidity:weatherStore.weatherCity.weather
+       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>{weatherDetail.weatherDetail?weatherDetail.weatherDetail.data.humidity:weatherStore.weatherCity.weather
           .data.daily[0].humidity}%</Text>
        <Text style={{color:"#ffffff",fontWeight:"400"}}>Độ ẩm trong ngày</Text>
     </SafeAreaView>

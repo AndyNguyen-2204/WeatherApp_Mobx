@@ -10,7 +10,7 @@ export default function UvIndex() {
        <Icon name='sun' color={"#ffffff"} size={25} />
        <Text style={{textTransform:"capitalize",color:"#ffffff"}}>Uv index</Text>
        </View>
-       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>{weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.uvi:weatherStore.weatherCity.weather
+       <Text style={{fontSize:30,color:"#ffffff",alignSelf:"center",fontWeight:"600"}}>{weatherDetail.weatherDetail?weatherDetail.weatherDetail.data.uvi:weatherStore.weatherCity.weather
           .data.daily[0].uvi}</Text>
        <Text style={{color:"#ffffff",fontWeight:"400"}}>Chỉ số thấp nhấp là 0 và cực đại là 11</Text>
     </SafeAreaView>

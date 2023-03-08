@@ -12,7 +12,7 @@ export default function DewPoint() {
        <Icon1 name='weather-fog' color={"#ffffff"} size={25} />
        <Text style={{textTransform:"capitalize",color:"#ffffff"}}>Dew point</Text>
        </View>
-       <Text style={{fontSize:20,color:"#ffffff",alignSelf:"center",marginTop:35}}>{weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.dew_point:weatherStore.weatherCity.weather.data.daily[0].dew_point}</Text>
+       <Text style={{fontSize:20,color:"#ffffff",alignSelf:"center",marginTop:35}}>{weatherDetail.weatherDetail?weatherDetail.weatherDetail.data.dew_point:weatherStore.weatherCity.weather.data.daily[0].dew_point}</Text>
     </SafeAreaView>
   )
 }

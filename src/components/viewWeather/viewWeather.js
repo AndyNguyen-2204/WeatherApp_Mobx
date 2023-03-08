@@ -3,7 +3,6 @@ import React from 'react'
 import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, Image } from "react-native"
 import { ativeViewWeather} from "./functionHelper"
 export default function ViewWeather({ data, valueTab,handelGetDetail}) {
-console.log("🚀 ~ file: viewWeather.js:7 ~ ViewWeather ~ data:", data)
 
   return (
     <TouchableOpacity style={[styles.wrapViewWeather, ativeViewWeather(data.dt, valueTab) ? styles.active : ""]} onPress={()=>handelGetDetail(data,valueTab)}>

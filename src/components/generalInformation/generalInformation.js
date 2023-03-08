@@ -11,15 +11,15 @@ export default function GeneralInformation() {
        <Text style={{textTransform:"capitalize",color:"#ffffff"}}>general Information</Text>
        </View>
        <View style={{flexDirection:"row",flexWrap:"wrap",gap:10,marginTop:20}}>
-        <Text style={styles.textInfo}>Nhiệt độ ban ngày : {weatherDetail.weatherDetail.data?Math.round(weatherDetail.weatherDetail.data.temp.morn):Math.round(weatherStore.weatherCity.weather
+        <Text style={styles.textInfo}>Nhiệt độ ban ngày : {weatherDetail.weatherDetail?Math.round(weatherDetail.weatherDetail.data.temp.morn):Math.round(weatherStore.weatherCity.weather
           .data.daily[0].temp.morn)}°</Text>
-        <Text style={styles.textInfo}>Độ ẩm : {weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.humidity:weatherStore.weatherCity.weather
+        <Text style={styles.textInfo}>Độ ẩm : {weatherDetail.weatherDetail?weatherDetail.weatherDetail.data.humidity:weatherStore.weatherCity.weather
           .data.daily[0].humidity}%</Text>
-        <Text style={styles.textInfo}>Áp lực : {weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.pressure:weatherStore.weatherCity.weather
+        <Text style={styles.textInfo}>Áp lực : {weatherDetail.weatherDetail?weatherDetail.weatherDetail.data.pressure:weatherStore.weatherCity.weather
           .data.daily[0].pressure} hPa</Text>
-        <Text style={styles.textInfo}>Nhiệt độ về đêm : {weatherDetail.weatherDetail.data?Math.round(weatherDetail.weatherDetail.data.temp.night):Math.round(weatherStore.weatherCity.weather
+        <Text style={styles.textInfo}>Nhiệt độ về đêm : {weatherDetail.weatherDetail?Math.round(weatherDetail.weatherDetail.data.temp.night):Math.round(weatherStore.weatherCity.weather
           .data.daily[0].temp.night)}°</Text>
-        <Text style={styles.textInfoo}>Nhiệt độ trung bình ngày : {weatherDetail.weatherDetail.data?Math.round(weatherDetail.weatherDetail.data.temp.day):Math.round(weatherStore.weatherCity.weather.data.daily[0].temp.day)}°</Text>
+        <Text style={styles.textInfoo}>Nhiệt độ trung bình ngày : {weatherDetail.weatherDetail?Math.round(weatherDetail.weatherDetail.data.temp.day):Math.round(weatherStore.weatherCity.weather.data.daily[0].temp.day)}°</Text>
        </View>
       </View>
   )

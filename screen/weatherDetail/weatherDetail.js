@@ -14,18 +14,19 @@ import { useStores } from '../../context/rootStore';
   const WeatherDetail=observer(()=>{
   const windowHeight = Dimensions.get('window').height;
   const {weatherStore,weatherDetail}=useStores()
+  console.log("🚀 ~ file: weatherDetail.js:17 ~ WeatherDetail ~ weatherDetail:", weatherDetail)
   return (
     <SafeAreaView style={{backgroundColor:"#708090",height:"100%",width:" 100%",paddingHorizontal:15}}>
       <View style={styles.topContent}>
           <Text style={styles.title}>{weatherStore?.weatherCity?.city}</Text>
           <View style={{flexDirection:"row",alignSelf:"center"}}>
-          <Text style={styles.temperature}>{weatherDetail.weatherDetail.data?Math.round(weatherDetail.weatherDetail.data.temp.day):Math.round(weatherStore.weatherCity.weather
+          <Text style={styles.temperature}>{weatherDetail.weatherDetail?Math.round(weatherDetail.weatherDetail.data.temp.day):Math.round(weatherStore.weatherCity.weather
           .data.daily[0].temp.day)}°</Text>
           <Text style={{fontSize:20,fontWeight:700,lineHeight:24,color:"#B8B8B8"}}> | </Text>
-          <Text style={styles.weather}>{weatherDetail.weatherDetail.data?weatherDetail.weatherDetail.data.weather[0].description:weatherStore.weatherCity.weather
+          <Text style={styles.weather}>{weatherDetail.weatherDetail?weatherDetail.weatherDetail.data.weather[0].description:weatherStore.weatherCity.weather
           .data.daily[0].weather[0].description}</Text>
           </View>
-          <Text style={{fontSize:20,fontWeight:"600",lineHeight:24, color:"#B8B8B8",alignSelf:"center",marginTop:5}}>{weatherDetail.weatherDetail.data? moment.unix(weatherDetail.weatherDetail.data.dt).format('DD-MM-YYYY'): moment.unix(weatherStore.weatherCity.weather
+          <Text style={{fontSize:20,fontWeight:"600",lineHeight:24, color:"#B8B8B8",alignSelf:"center",marginTop:5}}>{weatherDetail.weatherDetail? moment.unix(weatherDetail.weatherDetail.data.dt).format('DD-MM-YYYY'): moment.unix(weatherStore.weatherCity.weather
           .data.daily[0].dt).format('DD-MM-YYYY')}</Text>
         </View>
       <ScrollView showsVerticalScrollIndicator={false}>

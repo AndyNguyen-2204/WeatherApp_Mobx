@@ -13,12 +13,12 @@ export default function Sunrise() {
        </View>
        <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
         <Icon name="sunrise" color="#ffffff" size={25}/>
-        <Text style={{fontSize:20,color:"#ffffff"}}>{weatherDetail.weatherDetail.data?moment.unix(weatherDetail.weatherDetail.data.sunrise).format('LT'):moment.unix(weatherStore.weatherCity.weather
+        <Text style={{fontSize:20,color:"#ffffff"}}>{weatherDetail.weatherDetail?moment.unix(weatherDetail.weatherDetail.data.sunrise).format('LT'):moment.unix(weatherStore.weatherCity.weather
           .data.daily[0].sunrise).format('LT')}</Text>
        </View>
        <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
         <Icon name="sunset" color="#ffffff" size={25}/>
-        <Text style={{fontSize:20,color:"#ffffff"}}>{weatherDetail.weatherDetail.data?moment.unix(weatherDetail.weatherDetail.data.sunset).format('LT'):moment.unix(weatherStore.weatherCity.weather
+        <Text style={{fontSize:20,color:"#ffffff"}}>{weatherDetail.weatherDetail?moment.unix(weatherDetail.weatherDetail.data.sunset).format('LT'):moment.unix(weatherStore.weatherCity.weather
           .data.daily[0].sunset).format('LT')}</Text>
        </View>
     </SafeAreaView>
