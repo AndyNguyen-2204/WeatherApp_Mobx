@@ -63,9 +63,11 @@ const hourlyForecast=observer(({city,setErr})=> {
         actFetchApiRequest(res.data, weatherStore)
         setErr("")
         weatherDetail.getWeatherDetail()
-      }).catch(
-        setErr("Không tìm thấy thành phố  ")
-      )
+      }).catch(err=>{
+        if(city!==""){
+          setErr("Không tìm thấy thành phố  ")
+        }
+      })
   }, [city])
   return (
     <SafeAreaView style={styles.wraphourlyForecast}>
