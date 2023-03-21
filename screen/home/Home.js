@@ -40,13 +40,15 @@ import { debounce } from 'lodash';
   const debounceOnchange=debounce(updateCity,500)
   setTimeout(function(){
     setNullData(false)
-}, 3000);
+}, 1000);
   return (
    <SafeAreaView>
     {
       nullData?
       <>
-      <Image source={require("../../assets/homeImg/firstScreen.jpg")} style={{ height: "100%", width: "100%", resizeMode: "cover",zIndex:1000}} />
+      <View style={{height:"100%",width:"100%",flexDirection:"column",justifyContent:"center",alignItems:'center',backgroundColor:"#394c6b"}}>
+      <ActivityIndicator size="large" color="#ffffff"/>
+      </View>
       <View style={{display:"none"}} >
       <HourlyForecast city={city} setErr={setErr} />
       </View>
